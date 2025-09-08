@@ -1,0 +1,9 @@
+{
+	"name": "Factory-Databricks-Udemy",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bc9e0799-d79a-45f7-880d-79ff3b899e2c",
+		"tenantId": "6981199a-21fb-4201-86b4-ce38277af130"
+	}
+}
