@@ -1,0 +1,55 @@
+{
+	"name": "pipeline-Anac",
+	"properties": {
+		"activities": [
+			{
+				"name": "01_CamadaSilverAnac",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/patricksales@datalmeida22.onmicrosoft.com/pipeline-anac-azure-databricks/Notebooks - Prod/(Refat) 02.Patrick-ScriptsCamadaSilver"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksConexao",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "02_CamadaGoldAnac",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "01_CamadaSilverAnac",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/patricksales@datalmeida22.onmicrosoft.com/pipeline-anac-azure-databricks/Notebooks - Prod/(Refat) 03.Patrick-ScriptsCamadaGold"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksConexao",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
